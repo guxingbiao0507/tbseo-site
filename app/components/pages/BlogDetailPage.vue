@@ -64,7 +64,8 @@ import { normalizeContent } from '~/composables/normalizeContent'
 const route = useRoute()
 const { locale, t } = useI18n()
 const localePath = useLocalePath()
-const slug = computed(() => decodeURIComponent(route.params.slug as string))
+
+const slug = computed(() => decodeURIComponent(String(route.params.slug ?? '')))
 
 interface BlogPost {
   id: number
@@ -77,25 +78,34 @@ interface BlogPost {
   publishedAt?: number | string
   categoryName?: string
   authorName?: string
-  metaTitle?: string
   metaDescription?: string
   ogImage?: string
 }
 
-const { data: post, error, pending } = await useFetch<BlogPost>(() => `/api/public/posts/${encodeURIComponent(slug.value)}`, {
-  query: computed(() => ({ locale: locale.value })),
-  watch: [locale, slug],
-})
+const fetchKey = computed(() => `blog-post:${locale.value}:${slug.value}`)
 
-if (error.value) {
+const { data: post, error, pending } = await useFetch<BlogPost>(
+  () => `/api/public/posts/${encodeURIComponent(slug.value)}`,
+  {
+    query: () => ({ locale: locale.value }),
+    key: fetchKey,
+    watch: [locale, slug],
+  },
+)
+
+if (error.value || !post.value) {
   throw createError({ statusCode: 404, statusMessage: 'Post not found', fatal: true })
 }
 
-const { data: allPosts } = await useFetch<{ items: BlogPost[] }>('/api/public/posts', {
-  query: computed(() => ({ locale: locale.value, limit: 50 })),
-  watch: [locale],
-  default: () => ({ items: [] }),
-})
+const { data: allPosts } = await useFetch<{ items: BlogPost[] }>(
+  () => '/api/public/posts',
+  {
+    query: () => ({ locale: locale.value, limit: 50 }),
+    key: computed(() => `blog-list:${locale.value}`),
+    watch: [locale],
+    default: () => ({ items: [] }),
+  },
+)
 
 const currentIdx = computed(() =>
   (allPosts.value?.items ?? []).findIndex(p => p.slug === slug.value),

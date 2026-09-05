@@ -11,6 +11,20 @@ export default defineNuxtConfig({
     name: 'TailorBoost',
   },
 
+  sitemap: {
+    sitemaps: {
+      en: {
+        sources: ['/api/__sitemap__/urls'],
+        include: ['/**'],
+        exclude: ['/cn/**', '/admin/**', '/setup', '/api/**', '/my/**', '/th/**'],
+      },
+      cn: {
+        sources: ['/api/__sitemap__/urls'],
+        include: ['/cn/**'],
+      },
+    },
+  },
+
   i18n: {
     strategy: 'prefix_except_default',
     defaultLocale: 'en',
@@ -43,8 +57,9 @@ export default defineNuxtConfig({
         { name: 'description', content: 'TailorBoost – Your Trusted Partner for International Expansion. Professional SEO optimization, website development, and security protection with 15+ years of experience.' },
       ],
       link: [
-        { rel: 'icon', type: 'image/png', href: '/favicon.png' },
-        { rel: 'apple-touch-icon', href: '/favicon.png' },
+        { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+        { rel: 'icon', type: 'image/png', sizes: '32x32', href: '/favicon.png' },
+        { rel: 'apple-touch-icon', sizes: '180x180', href: '/apple-touch-icon.png' },
         { rel: 'stylesheet', href: 'https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css' },
       ],
     },

@@ -1,24 +1,12 @@
 {
-  "defaultLocale": "cn",
-  "fallbackLocale": "cn",
+  "defaultLocale": "en",
+  "fallbackLocale": "en",
   "locales": [
     {
       "code": "en",
       "language": "en-US",
       "name": "English",
       "file": "en.json"
-    },
-    {
-      "code": "th",
-      "language": "th-TH",
-      "name": "ไทย",
-      "file": "th.json"
-    },
-    {
-      "code": "my",
-      "language": "my-MM",
-      "name": "မြန်မာ",
-      "file": "my.json"
     },
     {
       "code": "cn",
