@@ -113,9 +113,7 @@
 <script setup lang="ts">
 const { t } = useI18n()
 const { resolvePath } = useResolveLocale()
-
-const IMG_BASE = 'https://tailorboost.com/us/wp-content/themes/tbseo/images'
-const img = (name: string) => `${IMG_BASE}/${name}`
+const { img } = useSiteAsset()
 
 const summaryKeys = ['team', 'tech', 'experience', 'results'] as const
 

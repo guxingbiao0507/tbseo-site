@@ -22,7 +22,7 @@
             <img
               v-if="post.coverImage"
               class="blog-item-img"
-              :src="post.coverImage"
+              :src="asset(post.coverImage)"
               :alt="post.title"
             >
             <div v-else class="blog-item-img blog-item-img--placeholder" />
@@ -55,9 +55,7 @@
 <script setup lang="ts">
 const { locale, t } = useI18n()
 const localePath = useLocalePath()
-
-const IMG_BASE = 'https://tailorboost.com/us/wp-content/themes/tbseo/images'
-const img = (name: string) => `${IMG_BASE}/${name}`
+const { img, asset } = useSiteAsset()
 
 interface BlogPost {
   id: number

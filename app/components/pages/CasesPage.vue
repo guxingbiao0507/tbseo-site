@@ -25,9 +25,7 @@
 
 <script setup lang="ts">
 const { resolvePath } = useResolveLocale()
-
-const IMG_BASE = 'https://tailorboost.com/us/wp-content/themes/tbseo/images'
-const img = (name: string) => `${IMG_BASE}/${name}`
+const { img } = useSiteAsset()
 
 interface DemoCase {
   title: string

@@ -21,7 +21,7 @@
       <div class="container-custom blog-detail-inner">
         <img
           v-if="post.coverImage"
-          :src="post.coverImage"
+          :src="asset(post.coverImage)"
           :alt="post.title"
           class="blog-detail-cover"
         >
@@ -64,6 +64,7 @@ import { normalizeContent } from '~/composables/normalizeContent'
 const route = useRoute()
 const { locale, t } = useI18n()
 const localePath = useLocalePath()
+const { asset } = useSiteAsset()
 
 const slug = computed(() => decodeURIComponent(String(route.params.slug ?? '')))
 
@@ -144,7 +145,10 @@ useSeoMeta({
   description: () => post.value?.metaDescription || post.value?.excerpt,
   ogTitle: () => post.value?.title,
   ogDescription: () => post.value?.metaDescription || post.value?.excerpt,
-  ogImage: () => post.value?.ogImage || post.value?.coverImage,
+  ogImage: () => {
+    const img = post.value?.ogImage || post.value?.coverImage
+    return img ? asset(img) : undefined
+  },
   ogType: 'article',
 })
 </script>

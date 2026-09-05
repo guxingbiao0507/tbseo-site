@@ -52,7 +52,5 @@
 const localePath = useLocalePath()
 const demoLink = computed(() => localePath({ path: '/', hash: '#demo' }))
 const { form, submitting, feedback, handleSubmit } = useContactForm()
-
-const IMG_BASE = 'https://tailorboost.com/us/wp-content/themes/tbseo/images'
-const img = (name: string) => `${IMG_BASE}/${name}`
+const { img } = useSiteAsset()
 </script>

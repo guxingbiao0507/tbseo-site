@@ -71,9 +71,22 @@ export default defineNuxtConfig({
       : {},
   },
 
+  runtimeConfig: {
+    public: {
+      /** Set NUXT_PUBLIC_USE_R2_MEDIA=true in production to serve images via /api/media/ */
+      useR2Media: process.env.NUXT_PUBLIC_USE_R2_MEDIA === 'true',
+    },
+  },
+
   routeRules: {
     '/api/public/posts': { cache: false },
     '/api/public/posts/**': { cache: false },
+    '/images/**': {
+      headers: { 'cache-control': 'public, max-age=31536000, immutable' },
+    },
+    '/uploads/**': {
+      headers: { 'cache-control': 'public, max-age=31536000, immutable' },
+    },
     '/**': {
       headers: {
         'Content-Security-Policy': [
@@ -82,7 +95,7 @@ export default defineNuxtConfig({
           "style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://fonts.googleapis.com",
           "font-src 'self' data: https://cdn.jsdelivr.net https://fonts.gstatic.com",
           "img-src 'self' data: blob: https:",
-          "connect-src 'self' https://www.google-analytics.com https://analytics.google.com https://www.clarity.ms https://c.clarity.ms https://cdn.jsdelivr.net",
+          "connect-src 'self' https://www.google-analytics.com https://analytics.google.com https://www.googletagmanager.com https://www.clarity.ms https://c.clarity.ms https://cdn.jsdelivr.net",
           "worker-src 'self' blob:",
           "frame-ancestors 'none'",
         ].join('; '),
