@@ -16,7 +16,7 @@ pages_build_output_dir = "dist"
 binding = "DB"
 database_name = "tbseo"
 database_id = "b8bd89ac-2760-43e6-9cb3-7bd5ee5675b0"
-migrations_dir = "server/database/migrations"
+migrations_dir = "node_modules/nuxtcms/server/database/migrations"
 
 # R2 bucket for media/attachments.
 # Create it once with:  pnpm exec wrangler r2 bucket create nuxtcms-media

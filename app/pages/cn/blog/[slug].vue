@@ -1,7 +1,7 @@
 <template>
-  <PagesHomePage />
+  <PagesBlogDetailPage />
 </template>
 
 <script setup lang="ts">
-useHead({ title: 'TailorBoost' })
+useUrlLocale()
 </script>

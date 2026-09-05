@@ -8,6 +8,10 @@
     "build:cf": "cross-env NITRO_PRESET=cloudflare_pages nuxt build && node node_modules/nuxtcms/scripts/patch-worker.mjs",
     "deploy": "node node_modules/nuxtcms/scripts/deploy.mjs",
     "deploy:migrate": "node node_modules/nuxtcms/scripts/deploy.mjs --migrate",
+    "import:blog": "node scripts/import-tailorboost-blog.mjs",
+    "import:blog:replace": "node scripts/import-tailorboost-blog.mjs --replace",
+    "install:admin": "node scripts/install-admin.mjs",
+    "seed:d1": "node scripts/seed-d1-remote.mjs",
     "postinstall": "nuxt prepare"
   },
   "dependencies": {

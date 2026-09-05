@@ -1,1 +1,1 @@
-export { schema, useDb, type DB } from '../../node_modules/.pnpm/git@github.com+guxingbiao0507+nuxtcms@5c731f095feb10af716252a65e9ebd146de55623_@cloudflare+wo_62h4rhwcf2crdnzyvubulqgs7a/node_modules/nuxtcms/server/database'
+export { schema, useDb, type DB } from '../../node_modules/nuxtcms/server/database'

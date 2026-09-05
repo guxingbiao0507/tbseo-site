@@ -1,203 +1,162 @@
 {
-  "about": {
-    "advantages": {
-      "production": {
-        "desc": "Direct from manufacturer",
-        "title": "Equipment Manufacturing"
-      },
-      "rd": {
-        "desc": "Meeting personalized requirements",
-        "title": "Custom R&D"
-      },
-      "support": {
-        "desc": "Nationwide warranty service",
-        "title": "Technical Support"
-      },
-      "title": "Why Choose Us"
-    },
-    "description": "Wuxi Tbseo Network Technology Co., Ltd. specializes in SEO optimization and digital marketing services. We provide high-quality search engine optimization solutions for businesses.",
-    "full": {
-      "p1": "Wuxi Tbseo Network Technology Co., Ltd. is a technology company specializing in search engine optimization and digital marketing services. Our SEO technical team, content strategy team, and data analysis team have been deeply engaged in the internet marketing industry for many years, with thorough knowledge of search engine algorithms and best practices.",
-      "p2": "We specialize in search engine optimization (SEO), search engine marketing (SEM), content marketing, social media operations, data analysis, website optimization and other digital marketing services. We provide full-process services from keyword research, website diagnosis, content optimization to backlink building, and ranking monitoring.",
-      "p3": "The company upholds the business philosophy of \"customer first\" and adheres to the policy of \"winning the market with data-driven growth, developing the enterprise with integrity and win-win\". We earn the trust and support of our customers with professional, efficient SEO technology and refined operational services. Choosing \"tbseo\" gives you data-driven optimization strategies + professional technical team + thoughtful after-sales service.",
-      "p4": "Give us your trust, and we will repay you with satisfactory online growth."
-    },
-    "heading": "Professional SEO Agency",
-    "mission": "Our Mission",
-    "missionText": "To provide high-quality SEO services and professional digital marketing solutions, becoming China's leading search engine optimization agency.",
-    "stats": {
-      "cases": "Success Cases",
-      "cities": "Cities Covered",
-      "clients": "Clients Served",
-      "years": "Years Experience"
-    },
-    "subtitle": "About tbseo",
-    "title": "About Us",
-    "vision": "Our Vision",
-    "visionText": "Becoming China's most trusted search engine optimization and digital marketing service brand."
+  "nav": {
+    "demo": "Demo",
+    "blog": "Blog",
+    "about": "About Us",
+    "chinese": "Chinese",
+    "english": "English"
   },
-  "cases": {
-    "description": "3000+ successful cases across electronics, food, chemical, logistics and more industries.",
-    "empty": "No cases yet",
-    "heading": "Our Success Stories",
-    "subtitle": "Professional Cases You Can Trust",
-    "title": "Cases",
-    "viewDetails": "View Details"
+  "hero": {
+    "line1": "Tailor Your Growth, Boost Your Impact",
+    "line2": "TailorBoost – Your Trusted Partner for International Expansion"
+  },
+  "summary": {
+    "team": {
+      "title": "Professional Team",
+      "subtitle": "Global Collaboration, Strong Support",
+      "items": [
+        "Team members are based in Finland, New Zealand, and Mainland China, combining a global perspective with localized strategies to create optimal solutions tailored to enterprises.",
+        "Our interdisciplinary team, composed of SEO experts, development engineers, and security consultants, ensures comprehensive optimization of your website, from rankings to security."
+      ]
+    },
+    "tech": {
+      "title": "Leading Technology",
+      "subtitle": "AI-Driven, Smart Optimization",
+      "items": [
+        "Using AI and big data analytics, we accurately identify search trends and optimize SEO strategies in real-time, ensuring your website maintains a competitive edge.",
+        "By utilizing high-performance CDN, website structure optimization, and mobile adaptation, we improve website loading speeds and optimize the user experience.",
+        "For security protection, we employ real-time monitoring and smart defense to effectively counter DDoS attacks, malicious threats, and ensure stable website operations."
+      ]
+    },
+    "experience": {
+      "title": "15+ Years of Industry Experience",
+      "subtitle": "Deep Focus on SEO and Website Optimization",
+      "items": [
+        "With over 15 years of experience in SEO optimization, website development, and security protection, we cover various industries, including e-commerce, technology, education, finance, and more.",
+        "We have served hundreds of companies, helping clients expand into international markets and achieve sustainable growth."
+      ]
+    },
+    "results": {
+      "title": "Results-Oriented",
+      "subtitle": "Data-Driven, Efficient Growth",
+      "items": [
+        "Significant SEO Ranking Improvement: Optimized keywords and helped clients' websites reach the front pages of search engines like Google and Bing.",
+        "Conversion Rate Optimization: Precisely targeted traffic to increase visitor conversion and retention rates, boosting business revenue.",
+        "Visual Data Analysis: Providing SEO reports, competitor analysis, and optimization recommendations, making optimization results tangible and measurable."
+      ]
+    }
+  },
+  "feature": {
+    "title": "Implementation Results",
+    "subtitle": "Implementation results are described from the perspectives of SEO Optimization Results, Website Optimization Results, Website Security Protection Results, and Business Growth Results",
+    "seo": {
+      "title": "SEO Optimization Results",
+      "items": [
+        "Improved Website Rankings: After keyword optimization, over 90% of core keywords on the client's website saw a significant increase in rankings on Google/Bing.",
+        "Organic Traffic Growth: Post-optimization, website organic traffic increased 3-10 times, with enhanced traffic quality leading to more precise users.",
+        "Bounce Rate Reduction of 30%+: Through content optimization and technical improvements, user experience was enhanced, leading to longer visitor stays and higher conversion rates."
+      ]
+    },
+    "website": {
+      "title": "Website Optimization Results",
+      "items": [
+        "Page Loading Speed Improved by 50%+: Using CDN acceleration, code optimization, and image compression, we made the website load faster, improving user experience.",
+        "100% Mobile Compatibility: All websites support responsive design, ensuring a consistent experience on both mobile and desktop devices.",
+        "User Interaction Rate Increased by 40%: Optimized UI/UX design to enhance readability and interactivity, encouraging users to browse and take action."
+      ]
+    },
+    "security": {
+      "title": "Website Security Protection Results",
+      "items": [
+        "99.9% Malicious Attack Interception Rate: Comprehensive protection against DDoS, SQL injections, malicious crawlers, and other security threats to ensure stable website operation.",
+        "HTTPS Secure Encryption: All websites are equipped with SSL certificates to encrypt data transmission, boosting user trust.",
+        "Real-Time Security Monitoring & Alerts: 24/7 monitoring to detect and fix security vulnerabilities promptly, reducing potential risks."
+      ]
+    },
+    "growth": {
+      "title": "Business Growth Results",
+      "items": [
+        "Inquiries and Conversion Rates Increased by 2-5 Times: Precision traffic optimization led to more visitors becoming potential customers, improving lead conversion rates.",
+        "Global Market Coverage Expanded: Leveraging localized SEO strategies to improve search engine rankings in various countries and regions, driving global growth.",
+        "Increased ROI: Through precise SEO optimization and website improvements, clients reduced ad spend by 30%+, with SEO providing free organic traffic and increasing ROI."
+      ]
+    }
+  },
+  "demo": {
+    "title": "TailorBoost",
+    "subtitle": "Actual combat witnesses strength, and every optimization is data-driven improvement",
+    "desc": "We will communicate with you in depth to fully understand your products, the dynamics of the industry and the competitive landscape of the market. Based on an in-depth analysis of your competitors, product features, and core keywords, we will formulate an accurate and efficient SEO optimization strategy based on the current status of your website, so as to help your website improve its ranking, obtain high-quality traffic, and achieve business growth.",
+    "cases": [
+      {
+        "title": "Platform outdoor equipment",
+        "desc": "The client, an e-commerce website focused on outdoor equipment, faced challenges such as slow traffic growth and large fluctuations in rankings. TailorBoost has developed an accurate and sustainable SEO optimization plan through in-depth research on industry trends, analysis of competitor data, and optimization of core keyword layout.\nWithin three months of the implementation of the optimization, the website's organic traffic grew steadily, the keyword rankings continued to improve, and the number of user visits increased significantly, achieving a truly stable growth. This not only improves the brand's visibility in search engines, but also brings more accurate customers to the business.",
+        "period": "Optimization period: 3 months",
+        "goal": "Core goal: improve SEO performance and achieve stable growth",
+        "result": "Optimization results: organic traffic continues to increase, ranking grows steadily, and conversion rate is optimized"
+      },
+      {
+        "title": "ToB Enterprise SEO Optimization – Achieve leapfrog growth",
+        "desc": "The client was a service provider for the enterprise (ToB) market, and the website faced problems such as slow traffic growth, limited customer acquisition channels, and insufficient brand exposure. TailorBoost has developed a high-performance growth SEO plan through in-depth analysis of industry needs, precise targeting of target customers, and optimization of website structure, content strategy, and keyword layout.\nWithin three months of optimization, the client's website saw an exponential increase in organic traffic, a significant jump in the ranking of core keywords, and a doubling of business opportunities, successfully achieving the goal of leapfrog growth. This result not only significantly improved the brand influence, but also brought high-quality potential customers to the company, helping the business to expand rapidly.",
+        "period": "Optimization period: 3 months",
+        "goal": "Core goal: to break through the bottleneck of growth and achieve leapfrog growth",
+        "result": "Optimization results: organic traffic has doubled, keyword rankings have been greatly improved, and customer acquisition efficiency has been significantly improved"
+      },
+      {
+        "title": "SEO Optimization for Startup Product-Based Businesses – Lay the groundwork for steady growth",
+        "desc": "The customer is a product-oriented enterprise in the start-up stage, with a wide range of products, but the exposure of a single product is insufficient, and the overall traffic is scattered, which affects the brand influence and conversion effect. In response to this challenge, TailorBoost has developed a systematic SEO optimization plan, including product classification optimization, precise keyword layout, on-site content strategy, etc., aiming to lay a solid foundation and increase overall traffic.\nAfter the optimization was implemented, the number of visits to the website increased significantly in just one month, and the search rankings of the core products continued to be optimized. In the following two months, despite the fluctuations in market traffic, the overall trend maintained a steady growth, helping the company establish a solid SEO foundation and lay a strong foundation for long-term growth in the future.",
+        "period": "Optimization period: 3 months",
+        "goal": "Core goal: to improve product exposure, lay a good SEO foundation, and achieve steady growth",
+        "result": "Optimization results: The number of visits increased rapidly, the keyword rankings were optimized, and the overall traffic rose steadily in fluctuations"
+      }
+    ]
+  },
+  "advantage": {
+    "title": "Our advantages",
+    "subtitle": "TailorBoost Core Advantages | Quick Rank Boost · AI Intelligent Optimization · One-stop SEO service",
+    "items": [
+      {
+        "title": "Rise in the rankings fast | Rapid results, efficient growth",
+        "desc": "TailorBoost employs deep optimization strategies and search engine algorithm insights to ensure that your website rankings can be significantly improved in a short period of time."
+      },
+      {
+        "title": "AI-Driven Analytics & Dynamic Tracking | Data intelligent decision-making, optimization, accuracy and efficiency",
+        "desc": "We rely on AI big data analysis to monitor website performance in real time and conduct dynamic optimization to ensure that SEO strategies are always ahead of the curve."
+      },
+      {
+        "title": "All-round one-stop custom SEO | Tailor-made growth solutions for long-term and stable development",
+        "desc": "We not only provide SEO optimization, but also create a complete SEO implementation system, from website construction to security protection, to empower your business growth in an all-round way."
+      }
+    ]
   },
   "contact": {
-    "address": "Address",
-    "chinaOffice": "Headquarters",
-    "companyName": "Wuxi Tbseo Network Technology Co., Ltd.",
-    "description": "Our professional team is ready to serve you with SEO needs and digital marketing inquiries.",
-    "email": "Email",
-    "error": "Failed to send. Please try again.",
-    "heading": "Get Professional Solutions",
-    "message": "Message",
-    "name": "Name",
-    "phone": "Phone",
-    "sendMessage": "Send Message",
-    "sending": "Sending…",
-    "sent": "Message sent! We'll get back to you soon.",
-    "verifyLabel": "I am not a robot",
-    "verifyRequired": "Please complete the verification first",
-    "subtitle": "We're Here to Help",
     "title": "Contact Us",
-    "workingHours": "Working Hours"
+    "subtitle": "Feel free to contact us for any inquiries. We will get back to you within 24 hours.",
+    "email": "Email",
+    "name": "Name",
+    "company": "Company",
+    "content": "Content",
+    "emailPlaceholder": "Please input your email",
+    "namePlaceholder": "Please input your name",
+    "companyPlaceholder": "Please input your company",
+    "contentPlaceholder": "Please input your content",
+    "submit": "Submit",
+    "submitting": "Submitting...",
+    "success": "Submitted successfully! We will contact you soon.",
+    "error": "Submission failed. Please try again later."
   },
-  "float": {
-    "phone": "Call Us",
-    "qq": "Online Chat",
-    "scan": "Scan to Follow",
-    "top": "Back to Top"
+  "blog": {
+    "title": "TailorBoost Blog: Hard-Checking SEO in the AI Era",
+    "subtitle": "Drive traffic, knowledge sharing",
+    "home": "Home",
+    "article": "Article",
+    "readMore": "Read more",
+    "loading": "Loading articles...",
+    "empty": "No articles yet. Check back soon!",
+    "prev": "Previous",
+    "next": "Next"
   },
   "footer": {
-    "addressLabel": "Address",
-    "contactInfo": "Contact",
-    "followUs": "Scan to Follow Us",
-    "gongan": "Su Gong'an Bei 32021402003517",
-    "icp": "Su ICP Bei 2022048827",
-    "japanese": "Japanese OK",
-    "landline": "Tel",
-    "mobile": "Mobile",
-    "productCenter": "Products",
-    "quickLinks": "Quick Links",
-    "techSupport": "Tech Support: tbseo",
-    "website": "Website"
-  },
-  "home": {
-    "features": {
-      "cases": {
-        "description": "Projects across 23 provinces, 118 cities",
-        "title": "3000+ Cases"
-      },
-      "custom": {
-        "description": "Independent development to meet needs",
-        "title": "Custom R&D"
-      },
-      "experience": {
-        "description": "Deep expertise in SEO and digital marketing",
-        "title": "20 Years Experience"
-      },
-      "support": {
-        "description": "1-on-1 professional service, 24/7 response",
-        "title": "National Support"
-      }
-    },
-    "heroDescription": "Wuxi Tbseo Network Technology Co., Ltd. specializes in SEO optimization and digital marketing services, helping businesses improve online visibility and growth.",
-    "heroSubtitle": "20 years of industry experience, professional SEO technology standards. We provide search engine optimization, keyword ranking, content marketing, backlink building and full-range digital marketing services with custom solutions.",
-    "heroTitle": "Professional SEO Optimization Agency",
-    "latestCases": "Featured Cases",
-    "latestPosts": "Latest News",
-    "viewAll": "View All"
-  },
-  "nav": {
-    "about": "About",
-    "admin": "Admin",
-    "cases": "Cases",
-    "contact": "Contact",
-    "docs": "Docs",
-    "home": "Home",
-    "news": "News",
-    "products": "Products",
-    "strengths": "Strengths"
-  },
-  "news": {
-    "description": "SEO industry latest dynamics, technical articles and optimization guides.",
-    "empty": "No news yet",
-    "heading": "Latest News",
-    "subtitle": "Industry News & Technical Insights",
-    "title": "News"
-  },
-  "topbar": {
-    "hotline": "National Service Hotline"
-  },
-  "services": {
-    "title": "Logistics Services",
-    "subtitle": "One-stop cross-border logistics solutions",
-    "heading": "Our Services",
-    "description": "Providing comprehensive logistics services from China to Southeast Asia, covering air freight, sea freight, warehousing, customs clearance, and last-mile delivery.",
-    "services_freight": {
-      "title": "International Freight",
-      "description": "Air and sea freight services from China to Thailand, Myanmar and other Southeast Asian countries with stable transit times and competitive rates.",
-      "time": "5-7 days"
-    },
-    "services_warehouse": {
-      "title": "Warehousing",
-      "description": "Warehousing centers in China and Southeast Asia providing receiving, storage, sorting, and packaging services.",
-      "time": "24/7"
-    },
-    "services_customs": {
-      "title": "Customs Clearance",
-      "description": "Professional customs clearance team familiar with regulations in China and Southeast Asian countries for fast cargo clearance.",
-      "time": "1-3 days"
-    },
-    "services_delivery": {
-      "title": "Last-Mile Delivery",
-      "description": "Last-mile delivery network covering major Southeast Asian cities with door-to-door service and real-time tracking.",
-      "time": "Same day"
-    },
-    "services_cargo": {
-      "title": "Bulk Cargo",
-      "description": "Specialized transport solutions for bulk commodities and large equipment, including special vehicles and lifting equipment.",
-      "time": "7-15 days"
-    },
-    "services_consulting": {
-      "title": "Logistics Consulting",
-      "description": "Professional consulting services including supply chain optimization, logistics planning, and cost analysis.",
-      "time": "By appointment"
-    }
-  },
-  "routes": {
-    "title": "Shipping Routes",
-    "subtitle": "Logistics routes from China to major Southeast Asian cities",
-    "heading": "Popular Routes",
-    "description": "We operate multiple international logistics routes from China to Southeast Asia, covering major border crossings in Yunnan and Guangdong, reaching Bangkok, Chiang Mai, Yangon and more.",
-    "chinaToThailand": {
-      "name": "China → Thailand",
-      "time": "5-7 days",
-      "desc": "Kunming → Chiang Mai, Guangzhou → Bangkok"
-    },
-    "chinaToMyanmar": {
-      "name": "China → Myanmar",
-      "time": "7-10 days",
-      "desc": "Kunming → Yangon, Kunming → Mandalay"
-    },
-    "thailandToMyanmar": {
-      "name": "Thailand → Myanmar",
-      "time": "3-5 days",
-      "desc": "Bangkok → Yangon, Bangkok → Mawlamyine"
-    }
-  },
-  "contactExtra": {
-    "hotline": "Hotline: 153-6521-5320 (Liu Mei)",
-    "mobile": "Mobile: 151-6157-3181 (Sun Shan)",
-    "landline": "Landline: 153-6529-7658 (Japanese OK)",
-    "address": "Address: No.8 Zhongtong Rd, Shuofang, Xinwu District, Wuxi City",
-    "website": "Website: https://tbseo.com",
-    "companyCard": "Wuxi Tbseo Network Technology Co., Ltd."
-  },
-  "footerExtra": {
-    "techSupport": "Tech Support: tbseo",
-    "companyDesc": "Specializing in SEO optimization and digital marketing services, providing data-driven SEO solutions."
+    "copyright": "Copyright © Tailor Boost 2026",
+    "cookiePrefs": "Update cookies preferences"
   }
 }

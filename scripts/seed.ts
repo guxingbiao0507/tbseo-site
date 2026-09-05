@@ -139,8 +139,8 @@ export async function runInstall(db: DB, input: { name: string; email: string; p
   // About page
   await rawExec(`INSERT INTO cms_posts (title, slug, excerpt, content, status, type, category_id, author_id, tags)
     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)`,
-    ['关于tbseo', 'about', '无锡tbseo网络科技有限公司 — 专业从事搜索引擎优化与数字营销服务的科技公司。',
-    '# 关于tbseo\n\n无锡tbseo网络科技有限公司是专业从事搜索引擎优化与数字营销服务的科技公司。',
+    ['关于', 'about', 'TailorBoost – 您值得信赖的出海增长伙伴。',
+    '# 关于\n\nTailorBoost 是一家拥有 15+ 年经验的专业 SEO 优化与数字营销服务商，已为全球数百家企业提供服务。',
     'published', 'page', null, adminId, ''])
 
   return { adminId }
