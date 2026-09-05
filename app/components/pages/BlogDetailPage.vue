@@ -5,53 +5,88 @@
   </div>
 
   <div v-else-if="post" class="blog-detail-page">
-    <div class="blog-detail-header">
-      <div class="container-custom">
-        <nav class="blog-detail-breadcrumb">
+    <header class="blog-detail-header">
+      <div class="container-custom blog-detail-header-inner">
+        <nav class="blog-detail-breadcrumb" aria-label="Breadcrumb">
           <NuxtLink :to="localePath('/')">{{ $t('blog.home') }}</NuxtLink>
-          <span>/</span>
+          <span aria-hidden="true">/</span>
           <NuxtLink :to="localePath('/blog')">{{ $t('nav.blog') }}</NuxtLink>
         </nav>
         <h1 class="blog-detail-title">{{ post.title }}</h1>
-        <time class="blog-detail-date">{{ formatDate(post.publishedAt) }}</time>
+        <div class="blog-detail-meta">
+          <time class="blog-detail-date" :datetime="publishedIso">{{ formatDate(post.publishedAt) }}</time>
+        </div>
       </div>
-    </div>
+    </header>
 
     <article class="blog-detail-body">
-      <div class="container-custom blog-detail-inner">
-        <img
-          v-if="post.coverImage"
-          :src="asset(post.coverImage)"
-          :alt="post.title"
-          class="blog-detail-cover"
-        >
+      <div class="container-custom">
+        <div class="blog-detail-layout">
+          <div class="blog-detail-main">
+            <img
+              v-if="post.coverImage"
+              :src="asset(post.coverImage)"
+              :alt="post.title"
+              class="blog-detail-cover"
+            >
 
-        <div class="blog-prose" v-html="normalizeContent(post.content)" />
+            <div class="blog-prose" v-html="normalizeContent(post.content)" />
 
-        <div class="blog-detail-back">
-          <NuxtLink :to="localePath('/blog')" class="blog-detail-back-link">
-            ← {{ $t('nav.blog') }}
-          </NuxtLink>
-        </div>
+            <div class="blog-detail-back">
+              <NuxtLink :to="localePath('/blog')" class="blog-detail-back-link">
+                ← {{ $t('nav.blog') }}
+              </NuxtLink>
+            </div>
 
-        <div class="blog-nav">
-          <NuxtLink
-            v-if="prev"
-            :to="blogPostLink(prev.slug)"
-            class="blog-nav-item"
-          >
-            <span class="blog-nav-label">← {{ $t('blog.prev') }}</span>
-            <span class="blog-nav-title">{{ prev.title }}</span>
-          </NuxtLink>
-          <div v-else />
-          <NuxtLink
-            v-if="next"
-            :to="blogPostLink(next.slug)"
-            class="blog-nav-item blog-nav-item--next"
-          >
-            <span class="blog-nav-label">{{ $t('blog.next') }} →</span>
-            <span class="blog-nav-title">{{ next.title }}</span>
-          </NuxtLink>
+            <nav v-if="prev || next" class="blog-nav" aria-label="Post navigation">
+              <NuxtLink
+                v-if="prev"
+                :to="blogPostLink(prev.slug)"
+                class="blog-nav-item"
+              >
+                <span class="blog-nav-label">← {{ $t('blog.prev') }}</span>
+                <span class="blog-nav-title">{{ prev.title }}</span>
+              </NuxtLink>
+              <div v-else class="blog-nav-spacer" />
+              <NuxtLink
+                v-if="next"
+                :to="blogPostLink(next.slug)"
+                class="blog-nav-item blog-nav-item--next"
+              >
+                <span class="blog-nav-label">{{ $t('blog.next') }} →</span>
+                <span class="blog-nav-title">{{ next.title }}</span>
+              </NuxtLink>
+            </nav>
+          </div>
+
+          <aside class="blog-detail-sidebar">
+            <div class="blog-detail-sidebar-card">
+              <NuxtLink :to="localePath('/blog')" class="blog-sidebar-link">
+                ← {{ $t('nav.blog') }}
+              </NuxtLink>
+              <p class="blog-sidebar-label">{{ $t('blog.published') }}</p>
+              <time class="blog-sidebar-date" :datetime="publishedIso">{{ formatDate(post.publishedAt) }}</time>
+            </div>
+            <div v-if="prev || next" class="blog-detail-sidebar-card">
+              <p class="blog-sidebar-label">{{ $t('blog.morePosts') }}</p>
+              <NuxtLink
+                v-if="prev"
+                :to="blogPostLink(prev.slug)"
+                class="blog-sidebar-post"
+              >
+                <span class="blog-sidebar-post-dir">← {{ $t('blog.prev') }}</span>
+                <span class="blog-sidebar-post-title">{{ prev.title }}</span>
+              </NuxtLink>
+              <NuxtLink
+                v-if="next"
+                :to="blogPostLink(next.slug)"
+                class="blog-sidebar-post"
+              >
+                <span class="blog-sidebar-post-dir">{{ $t('blog.next') }} →</span>
+                <span class="blog-sidebar-post-title">{{ next.title }}</span>
+              </NuxtLink>
+            </div>
+          </aside>
         </div>
       </div>
     </article>
@@ -136,6 +171,12 @@ function formatDate(value?: number | string | null) {
     day: 'numeric',
   })
 }
+
+const publishedIso = computed(() => {
+  const v = post.value?.publishedAt
+  if (!v) return undefined
+  return new Date(v).toISOString()
+})
 
 useHead({
   title: () => post.value?.title || t('nav.blog'),

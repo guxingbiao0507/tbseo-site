@@ -153,7 +153,9 @@
     "loading": "Loading articles...",
     "empty": "No articles yet. Check back soon!",
     "prev": "Previous",
-    "next": "Next"
+    "next": "Next",
+    "published": "Published",
+    "morePosts": "More articles"
   },
   "footer": {
     "copyright": "Copyright © Tailor Boost 2026",
