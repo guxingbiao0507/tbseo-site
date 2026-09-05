@@ -21,7 +21,7 @@
     "postinstall": "nuxt prepare"
   },
   "engines": {
-    "node": ">=20"
+    "node": "^20.19.0 || >=22.12.0"
   },
   "packageManager": "pnpm@10.28.2",
   "dependencies": {
@@ -48,6 +48,11 @@
     "better-sqlite3": "^13.0.3",
     "cross-env": "^10.1.0",
     "drizzle-kit": "^0.18.1",
-    "wrangler": "^4.110.0"
+    "wrangler": "^4.110.0",
+    "@oxc-parser/binding-linux-x64-gnu": "0.141.0",
+    "@oxc-transform/binding-linux-x64-gnu": "0.141.0",
+    "@oxc-minify/binding-linux-x64-gnu": "0.141.0",
+    "@rolldown/binding-linux-x64-gnu": "1.2.4",
+    "@tailwindcss/oxide-linux-x64-gnu": "4.3.3"
   }
 }
