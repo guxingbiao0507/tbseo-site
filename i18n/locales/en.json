@@ -169,5 +169,20 @@
     "desc": "This page may have been moved or removed from our previous site. You will be redirected to the homepage in {seconds} seconds.",
     "genericDesc": "Please try again later or return to the homepage.",
     "goHome": "Go to Homepage"
+  },
+  "admin": {
+    "brandSubtitle": "Content Management",
+    "welcome": "Welcome back, {name}",
+    "navGroup": {
+      "content": "Content",
+      "system": "System"
+    },
+    "login": {
+      "subtitle": "Sign in to manage your site content",
+      "brandDesc": "Manage blog posts, media, SEO settings and more from one place."
+    }
+  },
+  "common": {
+    "backToHome": "Back to homepage"
   }
 }

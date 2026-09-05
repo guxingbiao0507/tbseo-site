@@ -169,5 +169,20 @@
     "desc": "该页面可能已在网站升级后移动或删除。{seconds} 秒后将自动返回首页。",
     "genericDesc": "请稍后重试，或返回首页继续浏览。",
     "goHome": "返回首页"
+  },
+  "admin": {
+    "brandSubtitle": "内容管理",
+    "welcome": "欢迎回来，{name}",
+    "navGroup": {
+      "content": "内容",
+      "system": "系统"
+    },
+    "login": {
+      "subtitle": "登录以管理网站内容",
+      "brandDesc": "在此统一管理博客文章、媒体资源、SEO 设置等。"
+    }
+  },
+  "common": {
+    "backToHome": "返回首页"
   }
 }
