@@ -3,7 +3,7 @@
  * Run: pnpm run download:images
  */
 import { createHash } from 'node:crypto'
-import { existsSync, readFileSync } from 'node:fs'
+import { existsSync } from 'node:fs'
 import { mkdir, writeFile } from 'node:fs/promises'
 import { dirname, join } from 'node:path'
 import { fileURLToPath } from 'node:url'
@@ -47,13 +47,7 @@ async function download(name) {
 async function syncFavicons() {
   const logo = join(outDir, 'logo1.png')
   if (!existsSync(logo)) return
-  const publicDir = join(root, 'public')
-  const targets = ['favicon.png', 'favicon.ico', 'apple-touch-icon.png', 'logo1.png']
-  const buf = readFileSync(logo)
-  for (const name of targets) {
-    await writeFile(join(publicDir, name), buf)
-  }
-  console.log('  ✓ favicon.png / favicon.ico / apple-touch-icon.png updated from logo1.png')
+  console.log('  ✓ favicon uses /images/logo1.png')
 }
 
 async function main() {

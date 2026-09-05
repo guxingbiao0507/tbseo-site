@@ -57,9 +57,8 @@ export default defineNuxtConfig({
         { name: 'description', content: 'TailorBoost – Your Trusted Partner for International Expansion. Professional SEO optimization, website development, and security protection with 15+ years of experience.' },
       ],
       link: [
-        { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
-        { rel: 'icon', type: 'image/png', sizes: '32x32', href: '/favicon.png' },
-        { rel: 'apple-touch-icon', sizes: '180x180', href: '/apple-touch-icon.png' },
+        { rel: 'icon', type: 'image/png', href: '/images/logo1.png' },
+        { rel: 'apple-touch-icon', href: '/images/logo1.png' },
         { rel: 'stylesheet', href: 'https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css' },
       ],
     },
@@ -87,6 +86,9 @@ export default defineNuxtConfig({
     '/uploads/**': {
       headers: { 'cache-control': 'public, max-age=31536000, immutable' },
     },
+    '/favicon.ico': { redirect: { to: '/images/logo1.png', statusCode: 301 } },
+    '/favicon.svg': { redirect: { to: '/images/logo1.png', statusCode: 301 } },
+    '/favicon.png': { redirect: { to: '/images/logo1.png', statusCode: 301 } },
     '/**': {
       headers: {
         'Content-Security-Policy': [

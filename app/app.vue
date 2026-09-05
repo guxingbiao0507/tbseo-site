@@ -11,6 +11,10 @@ useHead(() => ({
   meta: [
     { name: 'google-site-verification', content: 'vTlCwi7aR1KIiK_bYP-lBwWIspwnONuIMKB2OFnpLDY' },
   ],
+  link: [
+    { rel: 'icon', type: 'image/png', href: '/images/logo1.png', key: 'favicon' },
+    { rel: 'apple-touch-icon', href: '/images/logo1.png', key: 'apple-touch-icon' },
+  ],
   script: [
     {
       type: 'application/ld+json',
