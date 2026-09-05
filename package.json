@@ -14,6 +14,7 @@
     "download:images": "node scripts/download-theme-images.mjs",
     "sync:assets": "node scripts/sync-local-assets.mjs",
     "upload:r2": "node scripts/upload-public-to-r2.mjs",
+    "configure:cf": "node scripts/configure-cf-pages.mjs",
     "deploy:all": "node scripts/deploy-with-r2.mjs",
     "install:admin": "node scripts/install-admin.mjs",
     "seed:d1": "node scripts/seed-d1-remote.mjs",
