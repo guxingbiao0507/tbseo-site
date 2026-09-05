@@ -160,8 +160,8 @@ pnpm dev
 ### Sitemap
 
 - 模块：`@nuxtjs/seo`
-- 分语言 Sitemap：`/sitemap_en.xml`、`/sitemap_cn.xml`
-- 动态数据源：`server/api/__sitemap__/urls.get.ts`
+- 分语言 Sitemap：`/__sitemap__/en.xml`、`/__sitemap__/cn.xml`（别名：`/sitemap_en.xml`、`/en/sitemap.xml`）
+- 动态数据源：`server/api/__sitemap__/en.get.ts`、`cn.get.ts`（共享 `server/utils/sitemap-urls.ts`）
   - 静态页面：首页、关于、博客列表、服务、案例、联系
   - 动态页面：已发布博客文章（含 `lastmod`）
   - 每条 URL 含 `hreflang`  alternate（en-US / zh-CN）

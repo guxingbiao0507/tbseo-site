@@ -10,6 +10,15 @@ const isCloudflareBuild =
 export default defineNuxtConfig({
   extends: ['nuxtcms'],
 
+  hooks: {
+    'config:resolved'(config) {
+      const sitemaps = config.sitemap?.sitemaps as Record<string, { sources?: string[] }> | undefined
+      if (!sitemaps) return
+      if (sitemaps.en) sitemaps.en.sources = ['/api/__sitemap__/en']
+      if (sitemaps.cn) sitemaps.cn.sources = ['/api/__sitemap__/cn']
+    },
+  },
+
   site: {
     url: process.env.NUXT_PUBLIC_SITE_URL || 'https://tailorboost.com',
     name: 'TailorBoost',
@@ -21,12 +30,12 @@ export default defineNuxtConfig({
     excludeAppSources: true,
     sitemaps: {
       en: {
-        sources: ['/api/__sitemap__/urls'],
+        sources: ['/api/__sitemap__/en'],
         include: ['/**'],
         exclude: ['/cn/**', '/admin/**', '/setup', '/api/**', '/my/**', '/th/**', '/docs/**', '/products/**'],
       },
       cn: {
-        sources: ['/api/__sitemap__/urls'],
+        sources: ['/api/__sitemap__/cn'],
         include: ['/cn/**'],
         exclude: ['/cn/admin/**', '/cn/setup/**', '/cn/docs/**', '/cn/products/**', '/cn/cn/**'],
       },
@@ -94,6 +103,14 @@ export default defineNuxtConfig({
   routeRules: {
     '/api/public/posts': { cache: false },
     '/api/public/posts/**': { cache: false },
+    '/api/__sitemap__/**': { cache: { maxAge: 300, swr: true } },
+    '/__sitemap__/**': { cache: { maxAge: 300, swr: true } },
+    '/sitemap_index.xml': { cache: { maxAge: 300, swr: true } },
+    '/sitemap.xml': { redirect: { to: '/sitemap_index.xml', statusCode: 301 } },
+    '/sitemap_en.xml': { redirect: { to: '/__sitemap__/en.xml', statusCode: 301 } },
+    '/sitemap_cn.xml': { redirect: { to: '/__sitemap__/cn.xml', statusCode: 301 } },
+    '/en/sitemap.xml': { redirect: { to: '/__sitemap__/en.xml', statusCode: 301 } },
+    '/cn/sitemap.xml': { redirect: { to: '/__sitemap__/cn.xml', statusCode: 301 } },
     '/images/**': {
       headers: { 'cache-control': 'public, max-age=31536000, immutable' },
     },
