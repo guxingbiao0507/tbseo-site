@@ -130,7 +130,7 @@ const { data: post, error, pending } = await useFetch<BlogPost>(
 )
 
 if (error.value || !post.value) {
-  throw createError({ statusCode: 404, statusMessage: 'Post not found', fatal: true })
+  throw createError({ statusCode: 404, statusMessage: 'Post not found' })
 }
 
 const { data: allPosts } = await useFetch<{ items: BlogPost[] }>(

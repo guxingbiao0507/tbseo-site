@@ -160,5 +160,14 @@
   "footer": {
     "copyright": "Copyright © Tailor Boost 2026",
     "cookiePrefs": "更新 Cookie 偏好设置"
+  },
+  "notFound": {
+    "title": "页面未找到",
+    "genericTitle": "出错了",
+    "heading": "抱歉，您访问的页面不存在",
+    "genericHeading": "页面出现错误",
+    "desc": "该页面可能已在网站升级后移动或删除。{seconds} 秒后将自动返回首页。",
+    "genericDesc": "请稍后重试，或返回首页继续浏览。",
+    "goHome": "返回首页"
   }
 }

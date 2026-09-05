@@ -160,5 +160,14 @@
   "footer": {
     "copyright": "Copyright © Tailor Boost 2026",
     "cookiePrefs": "Update cookies preferences"
+  },
+  "notFound": {
+    "title": "Page Not Found",
+    "genericTitle": "Something Went Wrong",
+    "heading": "Sorry, the page you requested could not be found",
+    "genericHeading": "Something went wrong",
+    "desc": "This page may have been moved or removed from our previous site. You will be redirected to the homepage in {seconds} seconds.",
+    "genericDesc": "Please try again later or return to the homepage.",
+    "goHome": "Go to Homepage"
   }
 }
