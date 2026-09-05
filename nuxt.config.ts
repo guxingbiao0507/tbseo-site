@@ -16,15 +16,19 @@ export default defineNuxtConfig({
   },
 
   sitemap: {
+    autoLastmod: true,
+    autoI18n: false,
+    excludeAppSources: true,
     sitemaps: {
       en: {
         sources: ['/api/__sitemap__/urls'],
         include: ['/**'],
-        exclude: ['/cn/**', '/admin/**', '/setup', '/api/**', '/my/**', '/th/**'],
+        exclude: ['/cn/**', '/admin/**', '/setup', '/api/**', '/my/**', '/th/**', '/docs/**', '/products/**'],
       },
       cn: {
         sources: ['/api/__sitemap__/urls'],
         include: ['/cn/**'],
+        exclude: ['/cn/admin/**', '/cn/setup/**', '/cn/docs/**', '/cn/products/**', '/cn/cn/**'],
       },
     },
   },

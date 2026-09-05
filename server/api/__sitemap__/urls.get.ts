@@ -3,7 +3,9 @@ import { useDb, schema } from '../../database'
 
 const LOCALES = ['en', 'cn'] as const
 
-/** Build locale-aware path (prefix_except_default: en has no prefix). */
+/** Static pages lastmod — update when marketing pages change materially. */
+const STATIC_LASTMOD = '2026-09-05T00:00:00.000Z'
+
 function localePath(locale: string, path: string) {
   if (locale === 'en') return path
   if (path === '/') return `/${locale}`
@@ -14,33 +16,47 @@ function hreflang(locale: string) {
   return locale === 'cn' ? 'zh-CN' : 'en-US'
 }
 
-function buildAlternates(pathByLocale: Record<string, string>) {
-  return Object.entries(pathByLocale).map(([locale, href]) => ({
+function absUrl(siteUrl: string, path: string) {
+  return new URL(path, siteUrl).href
+}
+
+function buildAlternates(siteUrl: string, pathByLocale: Record<string, string>) {
+  return Object.entries(pathByLocale).map(([locale, path]) => ({
     hreflang: hreflang(locale),
-    href,
+    href: absUrl(siteUrl, path),
   }))
 }
 
-/** TailorBoost sitemap URLs for @nuxtjs/sitemap. */
-export default defineEventHandler(async (event) => {
+function formatLastmod(value: unknown): string | undefined {
+  if (!value) return undefined
+  if (value instanceof Date) return value.toISOString()
+  if (typeof value === 'string') return value
+  return undefined
+}
+
+/** TailorBoost sitemap URLs for @nuxtjs/sitemap (en + cn sitemaps). */
+export default defineSitemapEventHandler(async (event) => {
+  const siteUrl = useSiteConfig(event).url || 'https://tailorboost.com'
+
   const staticRoutes = [
-    { path: '/', priority: 1, changefreq: 'weekly' },
-    { path: '/about', priority: 0.8, changefreq: 'monthly' },
-    { path: '/blog', priority: 0.9, changefreq: 'daily' },
-    { path: '/services', priority: 0.8, changefreq: 'monthly' },
-    { path: '/cases', priority: 0.8, changefreq: 'monthly' },
-    { path: '/contact', priority: 0.7, changefreq: 'monthly' },
+    { path: '/', priority: 1, changefreq: 'weekly' as const },
+    { path: '/about', priority: 0.8, changefreq: 'monthly' as const },
+    { path: '/blog', priority: 0.9, changefreq: 'daily' as const },
+    { path: '/services', priority: 0.8, changefreq: 'monthly' as const },
+    { path: '/cases', priority: 0.8, changefreq: 'monthly' as const },
+    { path: '/contact', priority: 0.7, changefreq: 'monthly' as const },
   ]
 
-  type SitemapUrl = {
+  type SitemapEntry = {
     loc: string
     lastmod?: string
     priority?: number
     changefreq?: string
     alternates?: { hreflang: string; href: string }[]
+    _sitemap?: string
   }
 
-  const urls: SitemapUrl[] = []
+  const urls: SitemapEntry[] = []
 
   for (const route of staticRoutes) {
     const pathByLocale = Object.fromEntries(
@@ -50,9 +66,11 @@ export default defineEventHandler(async (event) => {
     for (const locale of LOCALES) {
       urls.push({
         loc: pathByLocale[locale],
+        lastmod: STATIC_LASTMOD,
         priority: route.priority,
         changefreq: route.changefreq,
-        alternates: buildAlternates(pathByLocale),
+        alternates: buildAlternates(siteUrl, pathByLocale),
+        _sitemap: locale,
       })
     }
   }
@@ -85,19 +103,20 @@ export default defineEventHandler(async (event) => {
       const blogPath = `/blog/${post.slug}`
       const loc = localePath(post.locale, blogPath)
       const pathByLocale = pathsBySlug.get(post.slug) ?? { [post.locale]: loc }
+      const alternates = buildAlternates(siteUrl, pathByLocale)
 
-      const lastmod = post.updatedAt ?? post.publishedAt
       urls.push({
         loc,
-        lastmod: lastmod instanceof Date ? lastmod.toISOString() : undefined,
+        lastmod: formatLastmod(post.updatedAt ?? post.publishedAt),
         priority: 0.7,
         changefreq: 'monthly',
-        alternates: buildAlternates(pathByLocale),
+        alternates: alternates.length > 0 ? alternates : undefined,
+        _sitemap: post.locale,
       })
     }
   }
   catch {
-    // DB unavailable during prerender — static URLs only
+    // D1 unavailable — static URLs only
   }
 
   return urls
