@@ -1,15 +1,7 @@
 #!/usr/bin/env node
 /**
  * Cloudflare Pages build entry (git deploy).
- * Set in CF dashboard:
- *   Build command: pnpm run cf:build
- *   Build output: dist
- *   Node: 20
- *   Env: NITRO_PRESET=cloudflare_pages (optional, set below)
- *
- * For private nuxtcms GitHub dep, set GITHUB_TOKEN in CF Pages secrets
- * and use Install command:
- *   git config --global url."https://${GITHUB_TOKEN}@github.com/".insteadOf "git@github.com:" && pnpm install --frozen-lockfile
+ * Uses direct node invocation — avoids pnpm exec SIGSEGV on CF build workers.
  */
 import { spawnSync } from 'node:child_process'
 import { existsSync } from 'node:fs'
@@ -19,27 +11,49 @@ import { fileURLToPath } from 'node:url'
 const root = dirname(fileURLToPath(import.meta.url))
 const cwd = join(root, '..')
 
-function run(cmd, args, env = {}) {
-  console.log(`\n> ${cmd} ${args.join(' ')}`)
-  const res = spawnSync(cmd, args, {
+const buildEnv = {
+  ...process.env,
+  NITRO_PRESET: 'cloudflare_pages',
+  NODE_OPTIONS: process.env.NODE_OPTIONS || '--max-old-space-size=4096',
+}
+
+function runNode(args, label) {
+  console.log(`\n> node ${args.map(a => a.includes(' ') ? `"${a}"` : a).join(' ')}`)
+  const res = spawnSync(process.execPath, args, {
     cwd,
     stdio: 'inherit',
-    shell: true,
-    env: { ...process.env, ...env },
+    env: buildEnv,
+    shell: false,
   })
-  if (res.status !== 0) process.exit(res.status || 1)
+  if (res.error) {
+    console.error(`✗ ${label || 'command'} failed:`, res.error.message)
+    process.exit(1)
+  }
+  if (res.signal) {
+    console.error(`✗ ${label || 'command'} killed by signal ${res.signal}`)
+    process.exit(1)
+  }
+  if (res.status !== 0) {
+    process.exit(res.status || 1)
+  }
 }
 
 // Fallback: download theme images if public/images/ missing from checkout
 if (!existsSync(join(cwd, 'public', 'images', 'logo1.png'))) {
-  run('node', ['scripts/download-theme-images.mjs'])
+  runNode([join(cwd, 'scripts/download-theme-images.mjs')], 'download-theme-images')
 }
 
-run('pnpm', ['exec', 'nuxt', 'build'], { NITRO_PRESET: 'cloudflare_pages' })
+const nuxtBin = join(cwd, 'node_modules/nuxt/bin/nuxt.mjs')
+if (!existsSync(nuxtBin)) {
+  console.error('✗ nuxt not found — run pnpm install first')
+  process.exit(1)
+}
 
-const patchWorker = join(cwd, 'node_modules', 'nuxtcms', 'scripts', 'patch-worker.mjs')
+runNode([nuxtBin, 'build'], 'nuxt build')
+
+const patchWorker = join(cwd, 'node_modules/nuxtcms/scripts/patch-worker.mjs')
 if (existsSync(patchWorker)) {
-  run('node', [patchWorker])
+  runNode([patchWorker], 'patch-worker')
 }
 
 console.log('\n✓ Cloudflare Pages build complete → dist/')

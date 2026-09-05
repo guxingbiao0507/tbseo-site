@@ -63,17 +63,22 @@ async function main() {
   const env = loadEnv()
   const project = await cfFetch(env, 'GET', `/pages/projects/${env.project}`)
 
-  const productionEnv = mergeEnvVars(project.deployment_configs?.production?.env_vars, {
+  const buildEnvDefaults = {
     NUXT_PUBLIC_USE_R2_MEDIA: envVar('true'),
     SKIP_DEPENDENCY_INSTALL: envVar('1'),
-    ...(env.siteUrl ? { NUXT_PUBLIC_SITE_URL: envVar(env.siteUrl) } : {}),
+    NITRO_PRESET: envVar('cloudflare_pages'),
+    NODE_VERSION: envVar('20'),
+    NODE_OPTIONS: envVar('--max-old-space-size=4096'),
     ...(env.githubToken ? { GITHUB_TOKEN: envVar(env.githubToken, 'secret_text') } : {}),
+  }
+
+  const productionEnv = mergeEnvVars(project.deployment_configs?.production?.env_vars, {
+    ...buildEnvDefaults,
+    ...(env.siteUrl ? { NUXT_PUBLIC_SITE_URL: envVar(env.siteUrl) } : {}),
   })
 
   const previewEnv = mergeEnvVars(project.deployment_configs?.preview?.env_vars, {
-    NUXT_PUBLIC_USE_R2_MEDIA: envVar('true'),
-    SKIP_DEPENDENCY_INSTALL: envVar('1'),
-    ...(env.githubToken ? { GITHUB_TOKEN: envVar(env.githubToken, 'secret_text') } : {}),
+    ...buildEnvDefaults,
   })
 
   const body = {
@@ -99,6 +104,7 @@ async function main() {
 
   console.log(`✓ Updated Cloudflare Pages project "${env.project}"`)
   console.log('  Build:  bash scripts/cf-pages-install.sh && pnpm run cf:build → dist')
+  console.log('  Env:    NITRO_PRESET=cloudflare_pages, NODE_VERSION=20, NODE_OPTIONS=--max-old-space-size=4096')
   console.log('  Env:    NUXT_PUBLIC_USE_R2_MEDIA=true, SKIP_DEPENDENCY_INSTALL=1')
   if (env.siteUrl) console.log(`  Env:    NUXT_PUBLIC_SITE_URL=${env.siteUrl}`)
   if (env.githubToken) console.log('  Env:    GITHUB_TOKEN=*** (secret)')

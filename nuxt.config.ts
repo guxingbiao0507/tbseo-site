@@ -3,6 +3,10 @@ import { fileURLToPath } from 'node:url'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
 
+/** Cloudflare Pages build — stub native sqlite (D1 at runtime). */
+const isCloudflareBuild =
+  process.env.NITRO_PRESET === 'cloudflare_pages' || process.env.CF_PAGES === '1'
+
 export default defineNuxtConfig({
   extends: ['nuxtcms'],
 
@@ -70,7 +74,8 @@ export default defineNuxtConfig({
   },
 
   nitro: {
-    alias: process.env.NITRO_PRESET === 'cloudflare_pages'
+    preset: isCloudflareBuild ? 'cloudflare_pages' : undefined,
+    alias: isCloudflareBuild
       ? { 'better-sqlite3': resolve(__dirname, 'server/utils/better-sqlite3-stub') }
       : {},
   },

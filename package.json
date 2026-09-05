@@ -48,7 +48,6 @@
     "better-sqlite3": "^13.0.3",
     "cross-env": "^10.1.0",
     "drizzle-kit": "^0.18.1",
-    "workerd": "^1.20260813.1",
     "wrangler": "^4.110.0"
   }
 }
