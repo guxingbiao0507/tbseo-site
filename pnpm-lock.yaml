@@ -30,7 +30,7 @@ importers:
         specifier: ^0.5.29
         version: 0.5.30(oxc-parser@0.141.0)(rolldown@1.2.4)
       nuxtcms:
-        specifier: github:guxingbiao0507/nuxtcms
+        specifier: git+https://github.com/guxingbiao0507/nuxtcms.git
         version: git@github.com+guxingbiao0507/nuxtcms/5c731f095feb10af716252a65e9ebd146de55623(@cloudflare/workers-types@5.20260813.1)(@nuxt/content@3.15.2)(@tiptap/core@3.30.1)(@tiptap/extension-bubble-menu@3.30.1)(@tiptap/extension-code@3.30.1)(@tiptap/extension-collaboration@3.30.1)(@tiptap/extension-drag-handle-vue-3@3.30.1)(@tiptap/extension-drag-handle@3.30.1)(@tiptap/extension-floating-menu@3.30.1)(@tiptap/extension-horizontal-rule@3.30.1)(@tiptap/extension-image@3.30.1)(@tiptap/extension-mention@3.30.1)(@tiptap/extension-node-range@3.30.1)(@tiptap/extension-placeholder@3.30.1)(@tiptap/markdown@3.30.1)(@tiptap/pm@3.30.1)(@tiptap/starter-kit@3.30.1)(@tiptap/suggestion@3.30.1)(@tiptap/vue-3@3.30.1)(better-sqlite3@13.0.3)(embla-carousel@8.6.0)(esbuild@0.15.18)(eslint@10.8.1)(oxc-parser@0.141.0)(rolldown@1.2.4)(rollup@4.62.4)(typescript@6.0.3)(vite@8.2.1)
       tailwindcss:
         specifier: ^4.3.2

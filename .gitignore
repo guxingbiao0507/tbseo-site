@@ -28,4 +28,6 @@ logs
 # Wrangler
 .wrangler
 
-public
+# Public: track static assets for git deploy (images, uploads, auth files)
+# Do NOT ignore entire public/
+public/.cache

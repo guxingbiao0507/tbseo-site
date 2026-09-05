@@ -2,9 +2,11 @@ allowBuilds:
   better-sqlite3: true
   es5-ext: true
   esbuild: true
-  nuxtcms@git+ssh://git@github.com/guxingbiao0507/nuxtcms.git#1b9b25d2b50767374ca641a60aada7f13992d24f: true
   vue-demi: true
   workerd: true
+
+packages:
+  - '.'
 
 minimumReleaseAgeExclude:
   - '@cloudflare/workerd-darwin-64@1.20260813.1'
@@ -14,9 +16,3 @@ minimumReleaseAgeExclude:
   - '@cloudflare/workerd-windows-64@1.20260813.1'
   - '@cloudflare/workers-types@5.20260813.1'
   - workerd@1.20260813.1
-
-packages:
-  - 'app'
-  - 'server'
-  - 'i18n'
-  - 'scripts'

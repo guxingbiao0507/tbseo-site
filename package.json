@@ -6,6 +6,7 @@
     "dev": "nuxt dev",
     "build": "nuxt build",
     "build:cf": "cross-env NITRO_PRESET=cloudflare_pages nuxt build && node node_modules/nuxtcms/scripts/patch-worker.mjs",
+    "cf:build": "node scripts/cf-pages-build.mjs",
     "deploy": "node node_modules/nuxtcms/scripts/deploy.mjs",
     "deploy:migrate": "node node_modules/nuxtcms/scripts/deploy.mjs --migrate",
     "import:blog": "node scripts/import-tailorboost-blog.mjs",
@@ -18,6 +19,10 @@
     "seed:d1": "node scripts/seed-d1-remote.mjs",
     "postinstall": "nuxt prepare"
   },
+  "engines": {
+    "node": ">=20"
+  },
+  "packageManager": "pnpm@10.28.2",
   "dependencies": {
     "@libsql/client": "^0.17.4",
     "@nuxt/ui": "^4.9.0",
@@ -26,7 +31,7 @@
     "jose": "^6.2.3",
     "nuxt": "^4.4.8",
     "nuxt-auth-utils": "^0.5.29",
-    "nuxtcms": "github:guxingbiao0507/nuxtcms",
+    "nuxtcms": "git+https://github.com/guxingbiao0507/nuxtcms.git",
     "tailwindcss": "^4.3.2",
     "vue": "^3.5.39",
     "vue-router": "^5.1.0",
