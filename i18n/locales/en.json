@@ -179,7 +179,10 @@
     },
     "login": {
       "subtitle": "Sign in to manage your site content",
-      "brandDesc": "Manage blog posts, media, SEO settings and more from one place."
+      "brandDesc": "Manage blog posts, media, SEO settings and more from one place.",
+      "feature1": "Manage blog posts and pages",
+      "feature2": "Upload media and optimize SEO",
+      "feature3": "Secure admin access"
     }
   },
   "common": {

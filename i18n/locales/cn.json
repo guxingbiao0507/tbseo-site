@@ -179,7 +179,10 @@
     },
     "login": {
       "subtitle": "登录以管理网站内容",
-      "brandDesc": "在此统一管理博客文章、媒体资源、SEO 设置等。"
+      "brandDesc": "在此统一管理博客文章、媒体资源、SEO 设置等。",
+      "feature1": "管理博客文章与页面",
+      "feature2": "上传媒体并优化 SEO",
+      "feature3": "安全的管理员访问"
     }
   },
   "common": {

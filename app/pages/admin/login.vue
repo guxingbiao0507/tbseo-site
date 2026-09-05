@@ -10,6 +10,12 @@ const loading = ref(false)
 const verified = ref(false)
 const state = reactive({ email: '', password: '' })
 
+const features = computed(() => [
+  { icon: 'i-lucide-file-text', text: t('admin.login.feature1') },
+  { icon: 'i-lucide-image', text: t('admin.login.feature2') },
+  { icon: 'i-lucide-shield-check', text: t('admin.login.feature3') },
+])
+
 async function onSubmit() {
   if (!verified.value) {
     toast.add({
@@ -48,30 +54,59 @@ async function onSubmit() {
     loading.value = false
   }
 }
+
+useHead({ title: () => t('admin.login.title') })
 </script>
 
 <template>
   <div class="admin-login-page">
-    <div class="admin-login-brand">
-      <img src="/images/logo1.png" alt="TailorBoost">
-      <h1>{{ site.name || 'TailorBoost' }}</h1>
-      <p>{{ t('admin.login.brandDesc') }}</p>
-    </div>
+    <aside class="admin-login-brand">
+      <div class="admin-login-brand-glow admin-login-brand-glow--1" />
+      <div class="admin-login-brand-glow admin-login-brand-glow--2" />
+      <div class="admin-login-brand-content">
+        <img src="/images/logo1.png" alt="TailorBoost" class="admin-login-brand-logo">
+        <h1>{{ site.name || 'TailorBoost' }}</h1>
+        <p>{{ t('admin.login.brandDesc') }}</p>
+        <ul class="admin-login-features">
+          <li v-for="(item, i) in features" :key="i">
+            <span class="admin-login-feature-icon">
+              <UIcon :name="item.icon" />
+            </span>
+            {{ item.text }}
+          </li>
+        </ul>
+      </div>
+    </aside>
 
-    <div class="admin-login-form-wrap">
+    <main class="admin-login-form-wrap">
+      <div class="admin-login-toolbar">
+        <NuxtLink :to="localePath('/')" class="admin-login-home-link">
+          <UIcon name="i-lucide-arrow-left" />
+          {{ t('common.backToHome') }}
+        </NuxtLink>
+        <div class="admin-login-toolbar-actions">
+          <LanguageSwitcher />
+          <UColorModeButton />
+        </div>
+      </div>
+
       <div class="admin-login-card">
+        <div class="admin-login-card-badge">
+          <img src="/images/logo1.png" alt="">
+        </div>
         <div class="admin-login-card-header">
           <h2>{{ t('admin.login.title') }}</h2>
           <p>{{ t('admin.login.subtitle') }}</p>
         </div>
 
-        <form class="space-y-4" @submit.prevent="onSubmit">
+        <form class="admin-login-form" @submit.prevent="onSubmit">
           <UFormField :label="t('admin.login.email')" name="email" required>
             <UInput
               v-model="state.email"
               type="email"
               autocomplete="username"
               placeholder="admin@tailorboost.com"
+              icon="i-lucide-mail"
               class="w-full"
               size="lg"
             />
@@ -81,44 +116,35 @@ async function onSubmit() {
               v-model="state.password"
               type="password"
               autocomplete="current-password"
+              icon="i-lucide-lock"
               class="w-full"
               size="lg"
             />
           </UFormField>
-          <label class="admin-verify-box">
-            <input
-              v-model="verified"
-              type="checkbox"
-              class="w-5 h-5 rounded border-2 border-gray-300 accent-primary"
-            >
-            <span class="text-sm text-gray-600 dark:text-gray-300">
-              {{ t('admin.login.verifyLabel') }}
-            </span>
+
+          <label class="admin-verify-box" :class="{ 'is-checked': verified }">
+            <input v-model="verified" type="checkbox" class="admin-verify-checkbox">
+            <UIcon name="i-lucide-shield-check" class="admin-verify-icon" />
+            <span>{{ t('admin.login.verifyLabel') }}</span>
           </label>
+
           <UButton
             type="submit"
             block
-            size="lg"
+            size="xl"
             :loading="loading"
             :disabled="!verified"
             icon="i-lucide-log-in"
+            class="admin-login-submit"
           >
             {{ t('admin.login.submit') }}
           </UButton>
         </form>
-
-        <div class="mt-6 pt-4 border-t border-gray-200 dark:border-gray-700">
-          <UButton
-            :to="localePath('/')"
-            variant="link"
-            color="neutral"
-            size="sm"
-            icon="i-lucide-arrow-left"
-          >
-            {{ t('common.backToHome') }}
-          </UButton>
-        </div>
       </div>
-    </div>
+
+      <p class="admin-login-footer">
+        {{ t('footer.copyright') }}
+      </p>
+    </main>
   </div>
 </template>
