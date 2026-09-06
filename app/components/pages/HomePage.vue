@@ -9,7 +9,7 @@
         <div class="content-header-left">
           {{ $t('hero.line1') }}
         </div>
-        <div class="content-header-spacer" />
+        <div class="content-header-center" aria-hidden="true" />
         <div class="content-header-right">
           {{ $t('hero.line2') }}
         </div>
