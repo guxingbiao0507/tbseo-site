@@ -15,7 +15,7 @@ pages_build_output_dir = "dist"
 [[d1_databases]]
 binding = "DB"
 database_name = "tbseo"
-database_id = "b8bd89ac-2760-43e6-9cb3-7bd5ee5675b2"
+database_id = "591e342c-6b37-4220-9140-1db18bfe55b2"
 migrations_dir = "node_modules/nuxtcms/server/database/migrations"
 
 # R2 bucket for media/attachments.
