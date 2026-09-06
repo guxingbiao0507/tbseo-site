@@ -397,9 +397,6 @@ body.admin-site {
   padding: 100px 0;
   position: relative;
 }
-.demo-section .container-custom {
-  max-width: 1280px;
-}
 .demo-intro {
   display: flex;
   flex-direction: column;
