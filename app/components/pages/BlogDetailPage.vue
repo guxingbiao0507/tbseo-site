@@ -98,7 +98,7 @@ import { normalizeContent } from '~/composables/normalizeContent'
 
 const route = useRoute()
 const { locale, t } = useI18n()
-const localePath = useLocalePath()
+const localePath = useAppLocalePath()
 const { asset } = useSiteAsset()
 
 const slug = computed(() => decodeURIComponent(String(route.params.slug ?? '')))

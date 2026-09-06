@@ -1,8 +1,9 @@
 <template>
-  <PagesContactPage />
+  <PagesServicesPage />
 </template>
 
 <script setup lang="ts">
+useUrlLocale()
 const { t } = useI18n()
-useHead({ title: t('contact.email') })
+useHead({ title: t('advantage.title') })
 </script>

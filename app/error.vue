@@ -5,10 +5,13 @@ const props = defineProps<{ error: NuxtError }>()
 
 const route = useRoute()
 const { t, setLocale } = useI18n()
-const localePath = useLocalePath()
+const localePath = useAppLocalePath()
 
 if (route.path.startsWith('/cn')) {
   setLocale('cn')
+}
+else if (route.path.startsWith('/us')) {
+  setLocale('en')
 }
 
 const is404 = computed(() => props.error?.statusCode === 404)

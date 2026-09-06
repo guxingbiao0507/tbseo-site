@@ -31,19 +31,19 @@ export default defineNuxtConfig({
     sitemaps: {
       en: {
         sources: ['/api/__sitemap__/en'],
-        include: ['/**'],
+        include: ['/us/**'],
         exclude: ['/cn/**', '/admin/**', '/setup', '/api/**', '/my/**', '/th/**', '/docs/**', '/products/**'],
       },
       cn: {
         sources: ['/api/__sitemap__/cn'],
         include: ['/cn/**'],
-        exclude: ['/cn/admin/**', '/cn/setup/**', '/cn/docs/**', '/cn/products/**', '/cn/cn/**'],
+        exclude: ['/cn/admin/**', '/cn/setup/**', '/cn/docs/**', '/cn/products/**'],
       },
     },
   },
 
   i18n: {
-    strategy: 'prefix_except_default',
+    strategy: 'no_prefix',
     defaultLocale: 'en',
     lazy: false,
     langDir: 'locales',
@@ -51,16 +51,6 @@ export default defineNuxtConfig({
       { code: 'en', language: 'en-US', name: 'English', file: 'en.json' },
       { code: 'cn', language: 'zh-CN', name: '简体中文', file: 'cn.json' },
     ],
-    customRoutes: 'config',
-    pages: {
-      index: { en: '/', cn: '/cn' },
-      about: { en: '/about', cn: '/cn/about' },
-      blog: { en: '/blog', cn: '/cn/blog' },
-      'blog/[slug]': { en: '/blog/[slug]', cn: '/cn/blog/[slug]' },
-      cases: { en: '/cases', cn: '/cn/cases' },
-      services: { en: '/services', cn: '/cn/services' },
-      contact: { en: '/contact', cn: '/cn/contact' },
-    },
   },
 
   css: ['~/assets/css/main.css', '~/assets/css/admin.css'],

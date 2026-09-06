@@ -13,9 +13,9 @@ function siteUrl() {
 }
 
 function localePath(locale: string, path: string) {
-  if (locale === 'en') return path
-  if (path === '/') return `/${locale}`
-  return `/${locale}${path}`
+  const suffix = path === '/' ? '' : path
+  if (locale === 'en') return `/us${suffix}`
+  return `/cn${suffix}`
 }
 
 function hreflang(locale: string) {

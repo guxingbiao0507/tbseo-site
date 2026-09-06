@@ -20,7 +20,7 @@
       <div class="header-right">
         <div class="header-lang" role="group" aria-label="Language">
           <NuxtLink
-            :to="switchLocalePath('en')"
+            :to="localeLink('en')"
             class="lang-link"
             :class="{ 'lang-link--active': locale === 'en' }"
             :aria-current="locale === 'en' ? 'page' : undefined"
@@ -28,7 +28,7 @@
             EN
           </NuxtLink>
           <NuxtLink
-            :to="switchLocalePath('cn')"
+            :to="localeLink('cn')"
             class="lang-link"
             :class="{ 'lang-link--active': locale === 'cn' }"
             :aria-current="locale === 'cn' ? 'page' : undefined"
@@ -65,8 +65,8 @@
 
 <script setup lang="ts">
 const { locale } = useI18n()
-const localePath = useLocalePath()
-const switchLocalePath = useSwitchLocalePath()
+const localePath = useAppLocalePath()
+const { localeLink } = useLocaleSwitch()
 const { img } = useSiteAsset()
 
 const demoLink = computed(() => localePath({ path: '/', hash: '#demo' }))

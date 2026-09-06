@@ -49,7 +49,7 @@
 </template>
 
 <script setup lang="ts">
-const localePath = useLocalePath()
+const localePath = useAppLocalePath()
 const demoLink = computed(() => localePath({ path: '/', hash: '#demo' }))
 const { form, submitting, feedback, handleSubmit } = useContactForm()
 const { img } = useSiteAsset()

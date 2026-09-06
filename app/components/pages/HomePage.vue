@@ -69,20 +69,20 @@
           <p class="demo-title2">{{ $t('demo.subtitle') }}</p>
           <p class="demo-title3">{{ $t('demo.desc') }}</p>
         </div>
-      </div>
-      <div class="demo-scroll-wrap">
-        <div class="demo-scroll-inner">
-          <div
-            v-for="(c, i) in demoCases"
-            :key="i"
-            class="demo-item"
-          >
-            <p class="demo-item-title">{{ c.title }}</p>
-            <p class="demo-item-description whitespace-pre-line">{{ c.desc }}</p>
-            <p class="demo-item-meta">🔹 {{ c.period }}</p>
-            <p class="demo-item-meta">🔹 {{ c.goal }}</p>
-            <p class="demo-item-meta">🔹 {{ c.result }}</p>
-            <img :src="img(`demo${i + 1}.png`)" :alt="c.title">
+        <div class="demo-scroll-wrap">
+          <div class="demo-scroll-inner">
+            <div
+              v-for="(c, i) in demoCases"
+              :key="i"
+              class="demo-item"
+            >
+              <p class="demo-item-title">{{ c.title }}</p>
+              <p class="demo-item-description whitespace-pre-line">{{ c.desc }}</p>
+              <p class="demo-item-meta">🔹 {{ c.period }}</p>
+              <p class="demo-item-meta">🔹 {{ c.goal }}</p>
+              <p class="demo-item-meta">🔹 {{ c.result }}</p>
+              <img :src="img(`demo${i + 1}.png`)" :alt="c.title">
+            </div>
           </div>
         </div>
       </div>

@@ -1,8 +1,9 @@
 <template>
-  <PagesServicesPage />
+  <PagesAboutPage />
 </template>
 
 <script setup lang="ts">
+useUrlLocale()
 const { t } = useI18n()
-useHead({ title: t('advantage.title') })
+useHead({ title: t('nav.about') })
 </script>

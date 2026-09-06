@@ -54,7 +54,7 @@
 
 <script setup lang="ts">
 const { locale, t } = useI18n()
-const localePath = useLocalePath()
+const localePath = useAppLocalePath()
 const { img, asset } = useSiteAsset()
 
 interface BlogPost {

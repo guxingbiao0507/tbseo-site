@@ -43,7 +43,7 @@
 
 <script setup lang="ts">
 const { t } = useI18n()
-const localePath = useLocalePath()
+const localePath = useAppLocalePath()
 const { form, submitting, feedback, handleSubmit } = useContactForm()
 
 useHead({ title: t('contact.title') })

@@ -85,7 +85,7 @@ async function logout() {
 
       <div class="admin-sidebar-foot">
         <UButton
-          :to="localePath('/')"
+          :to="'/us'"
           target="_blank"
           icon="i-lucide-external-link"
           variant="soft"
