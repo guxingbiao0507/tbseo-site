@@ -1,6 +1,6 @@
 /**
  * Resolve vue-i18n locale data to plain strings/objects.
- * `tm()` returns compiled AST nodes for string values — rendering them shows raw JSON.
+ * `getLocaleMessage()` returns compiled AST nodes for string values — rendering them shows raw JSON.
  */
 export function useResolveLocale() {
   const { locale, getLocaleMessage, rt } = useI18n()
@@ -21,7 +21,7 @@ export function useResolveLocale() {
 function resolveLocaleValue(value: unknown, rt: (msg: unknown) => string): unknown {
   if (value == null) return value
   if (typeof value === 'string') return value
-  if (isMessageNode(value)) return rt(value)
+  if (isMessageNode(value)) return resolveMessageText(value, rt)
   if (Array.isArray(value)) {
     return value.map(item => resolveLocaleValue(item, rt))
   }
@@ -33,9 +33,43 @@ function resolveLocaleValue(value: unknown, rt: (msg: unknown) => string): unkno
   return String(value)
 }
 
+function resolveMessageText(node: Record<string, unknown>, rt: (msg: unknown) => string): string {
+  try {
+    const resolved = rt(node)
+    if (typeof resolved === 'string' && resolved && !resolved.startsWith('{')) {
+      return resolved
+    }
+  } catch {
+    // fall through to manual extraction
+  }
+  return extractStaticMessageText(node)
+}
+
+function extractStaticMessageText(node: Record<string, unknown>): string {
+  if (typeof node.s === 'string') return node.s
+  if (typeof node.source === 'string') return node.source
+
+  if (Array.isArray(node.i)) {
+    return node.i
+      .map(item => (typeof item === 'object' && item !== null
+        ? extractStaticMessageText(item as Record<string, unknown>)
+        : ''))
+      .join('')
+  }
+
+  const body = node.b ?? node.body
+  if (typeof body === 'object' && body !== null) {
+    return extractStaticMessageText(body as Record<string, unknown>)
+  }
+
+  return ''
+}
+
 function isMessageNode(value: unknown): value is Record<string, unknown> {
-  return typeof value === 'object'
-    && value !== null
-    && 'type' in value
-    && ('source' in value || 'body' in value)
+  if (typeof value !== 'object' || value === null) return false
+  const obj = value as Record<string, unknown>
+  if ('type' in obj && ('source' in obj || 'body' in obj)) return true
+  // Minified compiled AST: t=type, b=body, s=static, i=items
+  if ('t' in obj && ('b' in obj || 's' in obj || 'i' in obj)) return true
+  return false
 }
