@@ -50,6 +50,14 @@ async function main() {
         `INSERT INTO cms_settings (key, value) VALUES (${sqlEscape(row.key)}, ${sqlEscape(row.value)}) ON CONFLICT(key) DO UPDATE SET value = excluded.value;`,
       )
     }
+
+    const users = await local.execute('SELECT name, email, password, role FROM cms_users')
+    for (const u of users.rows) {
+      statements.push(`DELETE FROM cms_users WHERE email = ${sqlEscape(u.email)};`)
+      statements.push(
+        `INSERT INTO cms_users (name, email, password, role) VALUES (${sqlEscape(u.name)}, ${sqlEscape(u.email)}, ${sqlEscape(u.password)}, ${sqlEscape(u.role)});`,
+      )
+    }
   }
 
   const posts = await local.execute(`SELECT * FROM cms_posts WHERE type = 'post' AND status = 'published'`)
@@ -65,7 +73,7 @@ async function main() {
 
   const sqlFile = join(root, '.tmp-seed-d1.sql')
   writeFileSync(sqlFile, statements.join('\n'), 'utf-8')
-  console.log(`Generated ${statements.length} SQL statements for ${posts.rows.length} posts`)
+  console.log(`Generated ${statements.length} SQL statements (${posts.rows.length} posts)`)
 
   const token = process.env.CLOUDFLARE_API_TOKEN || process.env.NUXT_CF_API_TOKEN
   const account = process.env.CLOUDFLARE_ACCOUNT_ID || process.env.NUXT_CF_ACCOUNT_ID

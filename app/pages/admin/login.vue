@@ -1,11 +1,11 @@
 <script setup lang="ts">
 definePageMeta({ layout: false, i18n: { defaultLocale: 'cn' } })
 
-const localePath = useLocalePath()
 const route = useRoute()
 const toast = useToast()
 const { t } = useI18n()
 const site = useSite()
+const { login } = useAuth()
 const loading = ref(false)
 const verified = ref(false)
 const state = reactive({ email: '', password: '' })
@@ -28,17 +28,10 @@ async function onSubmit() {
 
   loading.value = true
   try {
-    await $fetch('/api/auth/login', {
-      method: 'POST',
-      body: {
-        email: state.email,
-        password: state.password,
-      },
-    })
+    await login(state.email, state.password)
 
     const redirect = (route.query.redirect as string) || ''
-    const localePrefix = localePath('/')
-    const target = redirect.startsWith(localePrefix) ? redirect : localePath('/admin')
+    const target = redirect.startsWith('/admin') ? redirect : '/admin'
     await navigateTo(target)
   }
   catch (err: any) {
@@ -80,7 +73,7 @@ useHead({ title: () => t('admin.login.title') })
 
     <main class="admin-login-form-wrap">
       <div class="admin-login-toolbar">
-        <NuxtLink :to="localePath('/')" class="admin-login-home-link">
+        <NuxtLink to="/us" class="admin-login-home-link">
           <UIcon name="i-lucide-arrow-left" />
           {{ t('common.backToHome') }}
         </NuxtLink>
